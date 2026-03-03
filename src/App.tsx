@@ -1,3 +1,4 @@
+import './i18n';
 import { useAdbConnection } from './hooks/useAdbConnection';
 import { useTerminal } from './hooks/useTerminal';
 import { usePtySession } from './hooks/usePtySession';

@@ -1,15 +1,10 @@
 import type { CommandEntry } from '../../data/types';
+import { useTranslation } from 'react-i18next';
 
 const riskColors = {
   safe: 'bg-success-light text-success-dark',
   moderate: 'bg-warning-light text-warning-dark',
   elevated: 'bg-danger-light text-danger-dark',
-} as const;
-
-const riskLabels = {
-  safe: 'safe',
-  moderate: 'caution',
-  elevated: 'advanced',
 } as const;
 
 interface CommandCardProps {
@@ -18,6 +13,14 @@ interface CommandCardProps {
 }
 
 export function CommandCard({ command, onClick }: CommandCardProps) {
+  const { t } = useTranslation();
+
+  const riskLabels = {
+    safe: t('risk.safe'),
+    moderate: t('risk.moderate'),
+    elevated: t('risk.elevated'),
+  };
+
   return (
     <button
       onClick={onClick}

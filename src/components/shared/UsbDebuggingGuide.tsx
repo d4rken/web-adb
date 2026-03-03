@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 
 type OS = 'windows' | 'macos' | 'linux';
 
@@ -12,6 +13,7 @@ function detectOS(): OS {
 export function UsbDebuggingGuide() {
   const [expanded, setExpanded] = useState(false);
   const os = detectOS();
+  const { t } = useTranslation();
 
   return (
     <div className="card-warm">
@@ -19,33 +21,33 @@ export function UsbDebuggingGuide() {
         onClick={() => setExpanded(!expanded)}
         className="flex w-full items-center justify-between p-5 text-left text-base font-medium text-warm-700 hover:bg-warm-200 rounded-2xl transition-colors"
       >
-        <span>Need help setting up your phone?</span>
+        <span>{t('usbGuide.title')}</span>
         <span className="text-warm-400">{expanded ? '−' : '+'}</span>
       </button>
 
       {expanded && (
         <div className="border-t border-warm-200 p-5 text-base text-warm-700 space-y-4">
           <ol className="list-decimal list-inside space-y-2">
-            <li>Open <strong>Settings</strong> on your Android phone</li>
-            <li>Go to <strong>About phone</strong></li>
-            <li>Tap <strong>Build number</strong> 7 times to unlock Developer Options</li>
-            <li>Go back to <strong>Settings</strong>, then <strong>Developer options</strong></li>
-            <li>Turn on <strong>USB debugging</strong></li>
-            <li>Connect your phone to this computer with a USB cable</li>
+            <li><Trans i18nKey="usbGuide.step1">Open <strong>Settings</strong> on your Android phone</Trans></li>
+            <li><Trans i18nKey="usbGuide.step2">Go to <strong>About phone</strong></Trans></li>
+            <li><Trans i18nKey="usbGuide.step3">Tap <strong>Build number</strong> 7 times to unlock Developer Options</Trans></li>
+            <li><Trans i18nKey="usbGuide.step4">Go back to <strong>Settings</strong>, then <strong>Developer options</strong></Trans></li>
+            <li><Trans i18nKey="usbGuide.step5">Turn on <strong>USB debugging</strong></Trans></li>
+            <li><Trans i18nKey="usbGuide.step6">Connect your phone to this computer with a USB cable</Trans></li>
           </ol>
 
           {os === 'windows' && (
             <div className="rounded-xl bg-warning-light border border-warning p-4">
-              <p className="font-medium text-warning-dark">Windows users</p>
+              <p className="font-medium text-warning-dark">{t('usbGuide.windowsTitle')}</p>
               <p className="mt-1 text-warning-dark">
-                You might need to install a USB driver for your phone.{' '}
+                {t('usbGuide.windowsMessage')}{' '}
                 <a
                   href="https://developer.android.com/studio/run/win-usb"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline"
                 >
-                  Get the Google USB Driver
+                  {t('usbGuide.windowsLink')}
                 </a>
               </p>
             </div>
@@ -53,16 +55,16 @@ export function UsbDebuggingGuide() {
 
           {os === 'linux' && (
             <div className="rounded-xl bg-warning-light border border-warning p-4">
-              <p className="font-medium text-warning-dark">Linux users</p>
+              <p className="font-medium text-warning-dark">{t('usbGuide.linuxTitle')}</p>
               <p className="mt-1 text-warning-dark">
-                You may need to set up udev rules for your device.{' '}
+                {t('usbGuide.linuxMessage')}{' '}
                 <a
                   href="https://developer.android.com/studio/run/device#setting-up"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline"
                 >
-                  See the Android guide
+                  {t('usbGuide.linuxLink')}
                 </a>
               </p>
             </div>
@@ -70,8 +72,10 @@ export function UsbDebuggingGuide() {
 
           <div className="rounded-xl bg-primary-50 border border-primary-200 p-4">
             <p className="text-primary-700">
-              <strong>Tip:</strong> Make sure you're using a USB cable that can transfer
-              data — some cables only charge.
+              <Trans i18nKey="usbGuide.tip">
+                <strong>Tip:</strong> Make sure you're using a USB cable that can transfer
+                data — some cables only charge.
+              </Trans>
             </p>
           </div>
         </div>

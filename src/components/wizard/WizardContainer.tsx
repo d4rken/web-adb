@@ -8,6 +8,7 @@ import { StepSelectApp } from './StepSelectApp';
 import { StepSelectCommand } from './StepSelectCommand';
 import { StepReview } from './StepReview';
 import { StepResult } from './StepResult';
+import { useTranslation } from 'react-i18next';
 
 interface WizardContainerProps {
   connectionState: ConnectionState;
@@ -20,8 +21,6 @@ interface WizardContainerProps {
 
 type ExecutionResult = { success: boolean; output: string } | null;
 
-const stepLabels = ['Connect', 'Pick App', 'Choose Action', 'Review', 'Done!'];
-
 export function WizardContainer({
   connectionState,
   onConnect,
@@ -30,10 +29,13 @@ export function WizardContainer({
   execute,
   writeln,
 }: WizardContainerProps) {
+  const { t } = useTranslation();
   const [route, setRoute] = useState<Route>(() => parseHash(window.location.hash));
   const [result, setResult] = useState<ExecutionResult>(null);
   const [isExecuting, setIsExecuting] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
+
+  const stepLabels = [t('steps.connect'), t('steps.pickApp'), t('steps.chooseAction'), t('steps.review'), t('steps.done')];
 
   useEffect(() => {
     const onHashChange = () => {
@@ -62,7 +64,7 @@ export function WizardContainer({
     abortRef.current = new AbortController();
 
     try {
-      writeln(`\x1b[36m$ adb shell\x1b[0m`);
+      writeln(`\x1b[36m${t('terminal.adbShell')}\x1b[0m`);
 
       const run = async (cmd: string) => {
         writeln(`\x1b[33m> ${cmd}\x1b[0m`);
@@ -75,7 +77,7 @@ export function WizardContainer({
       if (match.command.check) {
         const check = await match.command.check(run);
         if (!check.proceed) {
-          writeln(`\x1b[36m⏭ Skipped: ${check.message}\x1b[0m\n`);
+          writeln(`\x1b[36m${t('terminal.skipped', { message: check.message })}\x1b[0m\n`);
           setResult({ success: true, output: check.message });
           return;
         }
@@ -87,10 +89,10 @@ export function WizardContainer({
       } else if (match.command.command) {
         output = await run(match.command.command);
       } else {
-        output = 'No command to execute';
+        output = t('error.noCommand');
       }
 
-      writeln(`\x1b[32m✓ Done\x1b[0m\n`);
+      writeln(`\x1b[32m${t('terminal.done')}\x1b[0m\n`);
       setResult({ success: true, output });
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
@@ -100,7 +102,7 @@ export function WizardContainer({
       setIsExecuting(false);
       abortRef.current = null;
     }
-  }, [route, execute, writeln]);
+  }, [route, execute, writeln, t]);
 
   // Derive active step
   const isConnected = connectionState.status === 'connected';

@@ -11,6 +11,7 @@ import {
   getAdb,
 } from '../adb/connection';
 import { resetCredentialStore } from '../adb/credential-store';
+import { useTranslation } from 'react-i18next';
 
 export interface UseAdbConnection {
   state: ConnectionState;
@@ -22,6 +23,7 @@ export interface UseAdbConnection {
 }
 
 export function useAdbConnection(): UseAdbConnection {
+  const { t } = useTranslation();
   const [state, setState] = useState<ConnectionState>({ status: 'disconnected' });
   const adbRef = useRef<Adb | null>(null);
   const triedAutoReconnect = useRef(false);
@@ -76,15 +78,15 @@ export function useAdbConnection(): UseAdbConnection {
       }
 
       let detail: string | undefined;
-      if (message.includes('Unable to claim interface')) {
-        detail = 'Close Android Studio, other ADB clients, or browser tabs using this device, then retry.';
+      if (message.includes('Unable to claim interface') || message.includes('already in use')) {
+        detail = t('error.claimInterface');
       } else if (message.includes('timed out')) {
-        detail = 'Make sure to tap "Allow" on the USB debugging prompt on your phone.';
+        detail = t('error.timedOut');
       }
 
       setState({ status: 'error', error: message, detail });
     }
-  }, [finishConnect]);
+  }, [finishConnect, t]);
 
   const disconnect = useCallback(async () => {
     await adbDisconnect();

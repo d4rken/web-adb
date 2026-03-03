@@ -1,21 +1,24 @@
 import type { ConnectionState } from '../../adb/types';
 import { APP_NAME, APP_VERSION } from '../../lib/constants';
+import { useTranslation } from 'react-i18next';
 
 interface HeaderProps {
   state: ConnectionState;
   onDisconnect: () => void;
 }
 
-const statusConfig = {
-  disconnected: { label: 'Not connected', color: 'bg-warm-300 text-warm-600' },
-  'requesting-device': { label: 'Looking...', color: 'bg-warning-light text-warning-dark animate-gentle-pulse' },
-  connecting: { label: 'Connecting...', color: 'bg-warning-light text-warning-dark animate-gentle-pulse' },
-  authenticating: { label: 'Waiting for phone...', color: 'bg-warning-light text-warning-dark animate-gentle-pulse' },
-  connected: { label: 'Connected', color: 'bg-success-light text-success-dark' },
-  error: { label: 'Problem', color: 'bg-danger-light text-danger-dark' },
-} as const;
-
 export function Header({ state, onDisconnect }: HeaderProps) {
+  const { t } = useTranslation();
+
+  const statusConfig = {
+    disconnected: { label: t('header.disconnected'), color: 'bg-warm-300 text-warm-600' },
+    'requesting-device': { label: t('header.requesting'), color: 'bg-warning-light text-warning-dark animate-gentle-pulse' },
+    connecting: { label: t('header.connecting'), color: 'bg-warning-light text-warning-dark animate-gentle-pulse' },
+    authenticating: { label: t('header.authenticating'), color: 'bg-warning-light text-warning-dark animate-gentle-pulse' },
+    connected: { label: t('header.connected'), color: 'bg-success-light text-success-dark' },
+    error: { label: t('header.error'), color: 'bg-danger-light text-danger-dark' },
+  } as const;
+
   const { label, color } = statusConfig[state.status];
 
   return (
@@ -29,14 +32,14 @@ export function Header({ state, onDisconnect }: HeaderProps) {
         {state.status === 'connected' && (
           <>
             <div className="text-right">
-              <span className="text-sm text-warm-600">Connected to {state.deviceName}</span>
-              <p className="text-xs text-warm-400">Android {state.androidVersion}</p>
+              <span className="text-sm text-warm-600">{t('header.connectedTo', { deviceName: state.deviceName })}</span>
+              <p className="text-xs text-warm-400">{t('header.androidVersion', { androidVersion: state.androidVersion })}</p>
             </div>
             <button
               onClick={onDisconnect}
               className="rounded-lg border border-warm-300 px-2.5 py-1 text-xs font-medium text-warm-600 hover:bg-warm-200 transition-colors"
             >
-              Disconnect
+              {t('header.disconnect')}
             </button>
           </>
         )}
