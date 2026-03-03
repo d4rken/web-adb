@@ -14,7 +14,7 @@ export default function App() {
   usePtySession(state, terminal, fitAddon);
 
   return (
-    <div className="flex h-screen flex-col bg-gray-50 text-gray-900">
+    <div className="flex h-screen flex-col bg-warm-50 text-warm-800">
       <Header state={state} onDisconnect={disconnect} />
 
       <div className="flex flex-1 min-h-0 flex-col lg:flex-row">
@@ -30,7 +30,7 @@ export default function App() {
           <SupportFooter />
         </WizardPanel>
 
-        <div className="h-64 lg:h-auto lg:w-[480px] shrink-0 flex flex-col">
+        <div className="h-48 lg:h-auto lg:w-[360px] shrink-0 flex flex-col">
           <TerminalPanel>
             <XTermRenderer terminalRef={terminalRef} />
           </TerminalPanel>

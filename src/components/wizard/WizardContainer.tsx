@@ -20,7 +20,7 @@ interface WizardContainerProps {
 
 type ExecutionResult = { success: boolean; output: string } | null;
 
-const stepLabels = ['Connect', 'Select App', 'Select Command', 'Review', 'Result'];
+const stepLabels = ['Connect', 'Pick App', 'Choose Action', 'Review', 'Done!'];
 
 export function WizardContainer({
   connectionState,
@@ -119,43 +119,66 @@ export function WizardContainer({
   }
 
   return (
-    <div className="space-y-4">
-      {/* Progress bar */}
-      <div className="flex items-center gap-1">
-        {stepLabels.map((label, i) => (
-          <div key={label} className="flex-1">
-            <div className={`h-1.5 rounded-full transition-colors ${i <= activeStep ? 'bg-blue-500' : 'bg-gray-200'}`} />
-            <p className={`mt-1 text-xs text-center ${i === activeStep ? 'text-blue-600 font-medium' : 'text-gray-400'}`}>
-              {label}
-            </p>
-          </div>
-        ))}
+    <div className="space-y-6">
+      {/* Progress stepper */}
+      <div>
+        <div className="flex items-center">
+          {stepLabels.map((_, i) => (
+            <div key={i} className="flex flex-1 items-center">
+              <div
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold transition-all ${
+                  i < activeStep
+                    ? 'bg-primary-500 text-white'
+                    : i === activeStep
+                      ? 'bg-primary-500 text-white ring-4 ring-primary-100'
+                      : 'bg-warm-200 text-warm-400'
+                }`}
+              >
+                {i < activeStep ? '✓' : i + 1}
+              </div>
+              {i < stepLabels.length - 1 && (
+                <div className={`mx-1 h-0.5 flex-1 transition-colors ${i < activeStep ? 'bg-primary-500' : 'bg-warm-200'}`} />
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="mt-2 flex">
+          {stepLabels.map((label, i) => (
+            <div key={label} className="flex-1 text-center">
+              <span className={`text-xs ${i === activeStep ? 'text-primary-600 font-semibold' : 'text-warm-400'}`}>
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Step content */}
-      {activeStep === 0 && (
-        <StepConnect state={connectionState} onConnect={onConnect} onResetKey={onResetKey} />
-      )}
-      {activeStep === 1 && <StepSelectApp />}
-      {activeStep === 2 && route.appId && findApp(route.appId) && (
-        <StepSelectCommand app={findApp(route.appId)!} />
-      )}
-      {activeStep === 3 && route.appId && route.commandId && findCommand(route.appId, route.commandId) && (
-        <StepReview
-          app={findCommand(route.appId, route.commandId)!.app}
-          command={findCommand(route.appId, route.commandId)!.command}
-          onExecute={handleExecute}
-          isExecuting={isExecuting}
-        />
-      )}
-      {activeStep === 4 && result && (
-        <StepResult
-          success={result.success}
-          output={result.output}
-          appId={route.appId}
-          onDisconnect={onDisconnect}
-        />
-      )}
+      <div key={activeStep} className="animate-slide-up">
+        {activeStep === 0 && (
+          <StepConnect state={connectionState} onConnect={onConnect} onResetKey={onResetKey} />
+        )}
+        {activeStep === 1 && <StepSelectApp />}
+        {activeStep === 2 && route.appId && findApp(route.appId) && (
+          <StepSelectCommand app={findApp(route.appId)!} />
+        )}
+        {activeStep === 3 && route.appId && route.commandId && findCommand(route.appId, route.commandId) && (
+          <StepReview
+            app={findCommand(route.appId, route.commandId)!.app}
+            command={findCommand(route.appId, route.commandId)!.command}
+            onExecute={handleExecute}
+            isExecuting={isExecuting}
+          />
+        )}
+        {activeStep === 4 && result && (
+          <StepResult
+            success={result.success}
+            output={result.output}
+            appId={route.appId}
+            onDisconnect={onDisconnect}
+          />
+        )}
+      </div>
     </div>
   );
 }

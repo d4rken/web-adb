@@ -7,45 +7,43 @@ interface HeaderProps {
 }
 
 const statusConfig = {
-  disconnected: { label: 'Disconnected', color: 'bg-gray-400' },
-  'requesting-device': { label: 'Selecting…', color: 'bg-amber-400 animate-pulse' },
-  connecting: { label: 'Connecting…', color: 'bg-amber-400 animate-pulse' },
-  authenticating: { label: 'Authenticating…', color: 'bg-amber-400 animate-pulse' },
-  connected: { label: 'Connected', color: 'bg-green-500' },
-  error: { label: 'Error', color: 'bg-red-500' },
+  disconnected: { label: 'Not connected', color: 'bg-warm-300 text-warm-600' },
+  'requesting-device': { label: 'Looking...', color: 'bg-warning-light text-warning-dark animate-gentle-pulse' },
+  connecting: { label: 'Connecting...', color: 'bg-warning-light text-warning-dark animate-gentle-pulse' },
+  authenticating: { label: 'Waiting for phone...', color: 'bg-warning-light text-warning-dark animate-gentle-pulse' },
+  connected: { label: 'Connected', color: 'bg-success-light text-success-dark' },
+  error: { label: 'Problem', color: 'bg-danger-light text-danger-dark' },
 } as const;
 
 export function Header({ state, onDisconnect }: HeaderProps) {
   const { label, color } = statusConfig[state.status];
 
   return (
-    <header className="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3">
+    <header className="flex items-center justify-between border-b border-warm-200 bg-warm-100 px-4 py-3">
       <a href="#" className="flex items-center gap-2 no-underline">
-        <h1 className="text-lg font-semibold text-gray-900">{APP_NAME}</h1>
-        <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-500">
-          {APP_VERSION}
-        </span>
+        <h1 className="text-xl font-bold text-warm-800">{APP_NAME}</h1>
+        <span className="text-sm text-warm-400">{APP_VERSION}</span>
       </a>
 
       <div className="flex items-center gap-3">
         {state.status === 'connected' && (
           <>
-            <span className="text-sm text-gray-500">
-              {state.deviceName} · Android {state.androidVersion}
-            </span>
+            <div className="text-right">
+              <span className="text-sm text-warm-600">Connected to {state.deviceName}</span>
+              <p className="text-xs text-warm-400">Android {state.androidVersion}</p>
+            </div>
             <button
               onClick={onDisconnect}
-              className="rounded-md border border-gray-300 px-2.5 py-1 text-xs font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+              className="rounded-lg border border-warm-300 px-2.5 py-1 text-xs font-medium text-warm-600 hover:bg-warm-200 transition-colors"
             >
               Disconnect
             </button>
           </>
         )}
         {state.status !== 'connected' && (
-          <div className="flex items-center gap-1.5">
-            <span className={`h-2 w-2 rounded-full ${color}`} />
-            <span className="text-xs text-gray-500">{label}</span>
-          </div>
+          <span className={`rounded-full px-3 py-1 text-sm font-medium ${color}`}>
+            {label}
+          </span>
         )}
       </div>
     </header>

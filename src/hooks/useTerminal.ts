@@ -27,10 +27,10 @@ export function useTerminal(): UseTerminal {
       fontSize: 13,
       fontFamily: 'ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace',
       theme: {
-        background: '#1e1e2e',
-        foreground: '#cdd6f4',
-        cursor: '#f5e0dc',
-        selectionBackground: '#585b7066',
+        background: '#2C2620',
+        foreground: '#E8DFD0',
+        cursor: '#F59E4B',
+        selectionBackground: '#5A4D3A66',
       },
       convertEol: true,
     });

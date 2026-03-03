@@ -5,8 +5,8 @@ export function StepSelectApp() {
   return (
     <div className="space-y-4">
       <div>
-        <h2 className="text-lg font-semibold text-gray-900">Select App</h2>
-        <p className="mt-1 text-sm text-gray-500">Choose the app you need ADB commands for.</p>
+        <h2 className="text-xl font-bold text-warm-800">What app do you need help with?</h2>
+        <p className="mt-1 text-base text-warm-500">Tap the app you want to set up.</p>
       </div>
 
       <div className="grid gap-3">
@@ -14,21 +14,20 @@ export function StepSelectApp() {
           <button
             key={app.id}
             onClick={() => navigateTo({ appId: app.id })}
-            className="flex w-full items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 text-left transition hover:border-blue-300 hover:shadow-md"
+            className="card-warm-interactive flex w-full items-center gap-4 p-5 text-left"
           >
             {app.iconUrl ? (
               <img
                 src={`${import.meta.env.BASE_URL}${app.iconUrl}`}
                 alt=""
-                className="h-12 w-12 shrink-0 rounded-xl"
+                className="h-12 w-12 shrink-0 rounded-2xl shadow-sm"
               />
             ) : (
-              <div className="h-12 w-12 shrink-0 rounded-xl bg-gray-100" />
+              <div className="h-12 w-12 shrink-0 rounded-2xl bg-warm-200" />
             )}
             <div className="min-w-0">
-              <h3 className="font-medium text-gray-900">{app.name}</h3>
-              <p className="mt-1 text-sm text-gray-500">{app.description}</p>
-              <p className="mt-1 text-xs text-gray-400 font-mono">{app.packageName}</p>
+              <h3 className="text-lg font-semibold text-warm-800">{app.name}</h3>
+              <p className="mt-1 text-base text-warm-600">{app.description}</p>
             </div>
           </button>
         ))}

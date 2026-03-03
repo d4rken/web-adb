@@ -12,12 +12,12 @@ export function StepSelectCommand({ app }: StepSelectCommandProps) {
       <div>
         <button
           onClick={() => navigateTo({})}
-          className="text-sm text-blue-600 hover:text-blue-800"
+          className="text-sm font-medium text-primary-500 hover:text-primary-600"
         >
-          ← Back to apps
+          ← Back
         </button>
-        <h2 className="mt-1 text-lg font-semibold text-gray-900">{app.name}</h2>
-        <p className="mt-1 text-sm text-gray-500">Select a command to run.</p>
+        <h2 className="mt-1 text-xl font-bold text-warm-800">{app.name}</h2>
+        <p className="mt-1 text-base text-warm-500">What would you like to do?</p>
       </div>
 
       <div className="grid gap-3">
