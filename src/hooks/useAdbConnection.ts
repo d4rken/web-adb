@@ -3,7 +3,8 @@ import type { ConnectionState } from '../adb/types';
 import type { Adb } from '@yume-chan/adb';
 import {
   autoReconnect,
-  requestAndConnect,
+  requestDevice,
+  connectDevice,
   getDeviceInfo,
   disconnect as adbDisconnect,
   executeCommand,
@@ -60,7 +61,10 @@ export function useAdbConnection(): UseAdbConnection {
   const connect = useCallback(async () => {
     try {
       setState({ status: 'requesting-device' });
-      const adb = await requestAndConnect();
+      const device = await requestDevice();
+
+      setState({ status: 'authenticating' });
+      const adb = await connectDevice(device);
       await finishConnect(adb);
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);

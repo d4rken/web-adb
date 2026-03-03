@@ -64,19 +64,28 @@ export function WizardContainer({
     try {
       writeln(`\x1b[36m$ adb shell\x1b[0m`);
 
+      const run = async (cmd: string) => {
+        writeln(`\x1b[33m> ${cmd}\x1b[0m`);
+        const r = await execute(cmd, abortRef.current!.signal);
+        writeln(r);
+        return r;
+      };
+
+      // Pre-flight check
+      if (match.command.check) {
+        const check = await match.command.check(run);
+        if (!check.proceed) {
+          writeln(`\x1b[36m⏭ Skipped: ${check.message}\x1b[0m\n`);
+          setResult({ success: true, output: check.message });
+          return;
+        }
+      }
+
       let output: string;
       if (match.command.execute) {
-        // Multi-step command
-        output = await match.command.execute(async (cmd) => {
-          writeln(`\x1b[33m> ${cmd}\x1b[0m`);
-          const result = await execute(cmd, abortRef.current!.signal);
-          writeln(result);
-          return result;
-        });
+        output = await match.command.execute(run);
       } else if (match.command.command) {
-        writeln(`\x1b[33m> ${match.command.command}\x1b[0m`);
-        output = await execute(match.command.command, abortRef.current.signal);
-        writeln(output);
+        output = await run(match.command.command);
       } else {
         output = 'No command to execute';
       }

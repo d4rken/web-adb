@@ -14,11 +14,22 @@ export function StepSelectApp() {
           <button
             key={app.id}
             onClick={() => navigateTo({ appId: app.id })}
-            className="w-full rounded-xl border border-gray-200 bg-white p-4 text-left transition hover:border-blue-300 hover:shadow-md"
+            className="flex w-full items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 text-left transition hover:border-blue-300 hover:shadow-md"
           >
-            <h3 className="font-medium text-gray-900">{app.name}</h3>
-            <p className="mt-1 text-sm text-gray-500">{app.description}</p>
-            <p className="mt-2 text-xs text-gray-400 font-mono">{app.packageName}</p>
+            {app.iconUrl ? (
+              <img
+                src={`${import.meta.env.BASE_URL}${app.iconUrl}`}
+                alt=""
+                className="h-12 w-12 shrink-0 rounded-xl"
+              />
+            ) : (
+              <div className="h-12 w-12 shrink-0 rounded-xl bg-gray-100" />
+            )}
+            <div className="min-w-0">
+              <h3 className="font-medium text-gray-900">{app.name}</h3>
+              <p className="mt-1 text-sm text-gray-500">{app.description}</p>
+              <p className="mt-1 text-xs text-gray-400 font-mono">{app.packageName}</p>
+            </div>
           </button>
         ))}
       </div>

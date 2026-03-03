@@ -32,17 +32,17 @@ export async function autoReconnect(): Promise<Adb | null> {
   return connectDevice(devices[0]);
 }
 
-export async function requestAndConnect(): Promise<Adb> {
+export async function requestDevice(): Promise<AdbDaemonWebUsbDevice> {
   const manager = AdbDaemonWebUsbDeviceManager.BROWSER;
   if (!manager) throw new Error('WebUSB is not supported in this browser.');
 
   const device = await manager.requestDevice();
   if (!device) throw new Error('No device selected.');
 
-  return connectDevice(device);
+  return device;
 }
 
-async function connectDevice(device: AdbDaemonWebUsbDevice): Promise<Adb> {
+export async function connectDevice(device: AdbDaemonWebUsbDevice): Promise<Adb> {
   const connection = await device.connect();
 
   const transport = await withTimeout(
