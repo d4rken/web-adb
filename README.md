@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# darken's ADB Web Helper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A browser-based tool that runs ADB commands on your Android device over USB — no software installation required.
 
-Currently, two official plugins are available:
+**[Open ADB Web Helper](https://d4rken.github.io/web-adb/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What is this?
 
-## React Compiler
+Some Android apps need ADB permissions to work around OS restrictions. This tool lets you grant those permissions directly from your browser using [WebUSB](https://developer.mozilla.org/en-US/docs/Web/API/WebUSB_API), without installing ADB or any desktop software.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Currently supported:
+- **SD Maid SE** — Grant/revoke `WRITE_SECURE_SETTINGS`
 
-## Expanding the ESLint configuration
+## How to use
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Enable USB debugging on your Android device
+2. Connect it to your computer via USB
+3. Open the [web app](https://d4rken.github.io/web-adb/) in Chrome or Edge
+4. Select your device when prompted
+5. Tap "Allow" on the USB debugging prompt on your phone
+6. Pick an app and run the command you need
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Requirements
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- A Chromium-based browser (Chrome, Edge, Brave, Opera) — Firefox and Safari don't support WebUSB
+- A USB cable (not just charging — must support data transfer)
+- USB debugging enabled on the device
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Support
+
+- Discord: https://discord.gg/ENtVkMHqZg
+
+## Development
+
+```sh
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Tests: `npm test`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Deployments happen automatically when a version tag (`v*`) is pushed.
