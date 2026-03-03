@@ -23,8 +23,8 @@ export const sdmaidSe: AppCategory = {
       risk: 'safe',
       async check(run) {
         const granted = await hasWriteSecureSettings(run);
-        if (granted) return { proceed: false, message: 'Permission is already granted.' };
-        return { proceed: true, message: 'Permission is not granted yet.' };
+        if (granted) return { proceed: false, message: 'app.sdmaid-se.cmd.grant-write-secure-settings.checkGranted' };
+        return { proceed: true, message: 'app.sdmaid-se.cmd.grant-write-secure-settings.checkNotGranted' };
       },
     },
     {
@@ -35,8 +35,8 @@ export const sdmaidSe: AppCategory = {
       risk: 'safe',
       async check(run) {
         const granted = await hasWriteSecureSettings(run);
-        if (!granted) return { proceed: false, message: 'Permission is already revoked.' };
-        return { proceed: true, message: 'Permission is currently granted.' };
+        if (!granted) return { proceed: false, message: 'app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked' };
+        return { proceed: true, message: 'app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted' };
       },
     },
   ],

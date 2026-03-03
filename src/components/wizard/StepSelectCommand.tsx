@@ -27,6 +27,7 @@ export function StepSelectCommand({ app }: StepSelectCommandProps) {
         {app.commands.map((cmd) => (
           <CommandCard
             key={cmd.id}
+            appId={app.id}
             command={cmd}
             onClick={() => navigateTo({ appId: app.id, commandId: cmd.id })}
           />

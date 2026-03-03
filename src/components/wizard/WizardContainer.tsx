@@ -77,8 +77,9 @@ export function WizardContainer({
       if (match.command.check) {
         const check = await match.command.check(run);
         if (!check.proceed) {
-          writeln(`\x1b[36m${t('terminal.skipped', { message: check.message })}\x1b[0m\n`);
-          setResult({ success: true, output: check.message });
+          const translatedMessage = t(check.message);
+          writeln(`\x1b[36m${t('terminal.skipped', { message: translatedMessage })}\x1b[0m\n`);
+          setResult({ success: true, output: translatedMessage });
           return;
         }
       }

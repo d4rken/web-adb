@@ -8,11 +8,12 @@ const riskColors = {
 } as const;
 
 interface CommandCardProps {
+  appId: string;
   command: CommandEntry;
   onClick: () => void;
 }
 
-export function CommandCard({ command, onClick }: CommandCardProps) {
+export function CommandCard({ appId, command, onClick }: CommandCardProps) {
   const { t } = useTranslation();
 
   const riskLabels = {
@@ -27,12 +28,12 @@ export function CommandCard({ command, onClick }: CommandCardProps) {
       className="card-warm-interactive w-full p-5 text-left"
     >
       <div className="flex items-start justify-between gap-2">
-        <h3 className="font-semibold text-warm-800">{command.title}</h3>
+        <h3 className="font-semibold text-warm-800">{t(`app.${appId}.cmd.${command.id}.title`)}</h3>
         <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${riskColors[command.risk]}`}>
           {riskLabels[command.risk]}
         </span>
       </div>
-      <p className="mt-1 text-base text-warm-600">{command.description}</p>
+      <p className="mt-1 text-base text-warm-600">{t(`app.${appId}.cmd.${command.id}.description`)}</p>
     </button>
   );
 }
