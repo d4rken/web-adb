@@ -7,8 +7,23 @@ interface HeaderProps {
   onDisconnect: () => void;
 }
 
+const languages = [
+  { code: 'en', label: 'English' },
+  { code: 'de', label: 'Deutsch' },
+  { code: 'es', label: 'Español' },
+  { code: 'fr', label: 'Français' },
+  { code: 'pt-BR', label: 'Português' },
+  { code: 'zh-CN', label: '中文' },
+  { code: 'ja', label: '日本語' },
+  { code: 'it', label: 'Italiano' },
+  { code: 'pl', label: 'Polski' },
+  { code: 'tr', label: 'Türkçe' },
+  { code: 'ko', label: '한국어' },
+  { code: 'ru', label: 'Русский' },
+];
+
 export function Header({ state, onDisconnect }: HeaderProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const statusConfig = {
     disconnected: { label: t('header.disconnected'), color: 'bg-warm-300 text-warm-600' },
@@ -48,6 +63,15 @@ export function Header({ state, onDisconnect }: HeaderProps) {
             {label}
           </span>
         )}
+        <select
+          value={i18n.language}
+          onChange={(e) => i18n.changeLanguage(e.target.value)}
+          className="rounded-lg border border-warm-300 bg-warm-100 px-2 py-1 text-xs text-warm-600 hover:bg-warm-200 transition-colors"
+        >
+          {languages.map((lang) => (
+            <option key={lang.code} value={lang.code}>{lang.label}</option>
+          ))}
+        </select>
       </div>
     </header>
   );
