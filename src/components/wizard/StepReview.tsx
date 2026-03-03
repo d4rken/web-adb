@@ -7,6 +7,12 @@ const riskColors = {
   elevated: 'bg-red-100 text-red-800 border-red-200',
 } as const;
 
+const riskLabels = {
+  safe: 'Safe — easily reversible',
+  moderate: 'Moderate — changes system settings',
+  elevated: 'Elevated — significant system changes',
+} as const;
+
 const riskMessages = {
   safe: 'This command is safe and easily reversible.',
   moderate: 'This command modifies system settings. Review carefully before executing.',
@@ -45,26 +51,24 @@ export function StepReview({ app, command, onExecute, isExecuting }: StepReviewP
           <p className="mt-1 text-sm text-gray-500">{command.description}</p>
         </div>
 
-        {command.command && (
-          <div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-wide">ADB Shell Command</p>
+        <details className="group">
+          <summary className="cursor-pointer text-xs font-medium text-gray-400 uppercase tracking-wide select-none list-none">
+            <span className="group-open:hidden">▶ Show technical details</span>
+            <span className="hidden group-open:inline">▼ Hide technical details</span>
+          </summary>
+          {command.command ? (
             <pre className="mt-1 rounded-lg bg-gray-900 p-3 text-sm text-green-400 overflow-x-auto">
               {command.command}
             </pre>
-          </div>
-        )}
-
-        {!command.command && (
-          <div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-wide">ADB Shell Command</p>
+          ) : (
             <p className="mt-1 text-sm text-gray-500 italic">
               Multi-step command (reads current value, modifies, writes back)
             </p>
-          </div>
-        )}
+          )}
+        </details>
 
         <div className={`rounded-lg border p-3 ${riskColors[command.risk]}`}>
-          <p className="text-sm font-medium">Risk: {command.risk}</p>
+          <p className="text-sm font-medium">{riskLabels[command.risk]}</p>
           <p className="mt-0.5 text-sm">{riskMessages[command.risk]}</p>
         </div>
       </div>

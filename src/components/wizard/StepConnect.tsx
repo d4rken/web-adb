@@ -13,6 +13,11 @@ export function StepConnect({ state, onConnect, onResetKey }: StepConnectProps) 
 
   return (
     <div className="space-y-4">
+      <p className="text-sm text-gray-500">
+        This tool runs setup commands on your Android device directly from your browser.
+        Just plug in your phone via USB, pick an app, and choose a command — no extra software needed.
+      </p>
+
       <BrowserCheck />
 
       <div className="rounded-xl border border-gray-200 bg-white p-6">
