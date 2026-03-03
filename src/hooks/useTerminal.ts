@@ -4,6 +4,8 @@ import { FitAddon } from '@xterm/addon-fit';
 
 export interface UseTerminal {
   terminalRef: React.RefObject<HTMLDivElement | null>;
+  terminal: React.RefObject<Terminal | null>;
+  fitAddon: React.RefObject<FitAddon | null>;
   writeln: (text: string) => void;
   write: (text: string) => void;
   clear: () => void;
@@ -21,8 +23,7 @@ export function useTerminal(): UseTerminal {
     initialized.current = true;
 
     const term = new Terminal({
-      cursorBlink: false,
-      disableStdin: true,
+      cursorBlink: true,
       fontSize: 13,
       fontFamily: 'ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace',
       theme: {
@@ -66,5 +67,5 @@ export function useTerminal(): UseTerminal {
     termRef.current?.clear();
   }, []);
 
-  return { terminalRef: containerRef, writeln, write, clear };
+  return { terminalRef: containerRef, terminal: termRef, fitAddon: fitRef, writeln, write, clear };
 }

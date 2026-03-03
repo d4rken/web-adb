@@ -109,6 +109,36 @@ export async function executeCommand(
   return result.trim();
 }
 
+export interface PtySession {
+  input: WritableStream<Uint8Array>;
+  output: ReadableStream<Uint8Array>;
+  exited: Promise<unknown>;
+  resize?: (rows: number, cols: number) => Promise<void>;
+  kill: () => void;
+}
+
+export async function spawnShell(adb: Adb): Promise<PtySession> {
+  const shellProtocol = adb.subprocess.shellProtocol;
+  if (shellProtocol) {
+    const pty = await shellProtocol.pty({ terminalType: 'xterm-256color' });
+    return {
+      input: pty.input as unknown as WritableStream<Uint8Array>,
+      output: pty.output as unknown as ReadableStream<Uint8Array>,
+      exited: pty.exited,
+      resize: (rows, cols) => pty.resize(rows, cols),
+      kill: () => pty.kill(),
+    };
+  }
+
+  const pty = await adb.subprocess.noneProtocol.pty();
+  return {
+    input: pty.input as unknown as WritableStream<Uint8Array>,
+    output: pty.output as unknown as ReadableStream<Uint8Array>,
+    exited: pty.exited,
+    kill: () => pty.kill(),
+  };
+}
+
 export async function disconnect(): Promise<void> {
   if (currentAdb) {
     await currentAdb.close();
