@@ -8,19 +8,23 @@ interface HeaderProps {
 }
 
 const languages = [
-  { code: 'en', label: 'English' },
-  { code: 'de', label: 'Deutsch' },
-  { code: 'es', label: 'Español' },
-  { code: 'fr', label: 'Français' },
-  { code: 'pt-BR', label: 'Português' },
-  { code: 'zh-CN', label: '中文' },
-  { code: 'ja', label: '日本語' },
-  { code: 'it', label: 'Italiano' },
-  { code: 'pl', label: 'Polski' },
-  { code: 'tr', label: 'Türkçe' },
-  { code: 'ko', label: '한국어' },
-  { code: 'ru', label: 'Русский' },
+  { code: 'en', flag: '🇬🇧', label: 'English' },
+  { code: 'de', flag: '🇩🇪', label: 'Deutsch' },
+  { code: 'es', flag: '🇪🇸', label: 'Español' },
+  { code: 'fr', flag: '🇫🇷', label: 'Français' },
+  { code: 'pt-BR', flag: '🇧🇷', label: 'Português' },
+  { code: 'zh-CN', flag: '🇨🇳', label: '中文' },
+  { code: 'ja', flag: '🇯🇵', label: '日本語' },
+  { code: 'it', flag: '🇮🇹', label: 'Italiano' },
+  { code: 'pl', flag: '🇵🇱', label: 'Polski' },
+  { code: 'tr', flag: '🇹🇷', label: 'Türkçe' },
+  { code: 'ko', flag: '🇰🇷', label: '한국어' },
+  { code: 'ru', flag: '🇷🇺', label: 'Русский' },
 ];
+
+function resolvedLanguage(i18n: { resolvedLanguage?: string; language: string }): string {
+  return i18n.resolvedLanguage ?? i18n.language;
+}
 
 export function Header({ state, onDisconnect }: HeaderProps) {
   const { t, i18n } = useTranslation();
@@ -38,10 +42,21 @@ export function Header({ state, onDisconnect }: HeaderProps) {
 
   return (
     <header className="flex items-center justify-between border-b border-warm-200 bg-warm-100 px-4 py-3">
-      <a href="#" className="flex items-center gap-2 no-underline">
-        <h1 className="text-xl font-bold text-warm-800">{APP_NAME}</h1>
-        <span className="text-sm text-warm-400">{APP_VERSION}</span>
-      </a>
+      <div className="flex items-center gap-3">
+        <a href="#" className="flex items-center gap-2 no-underline">
+          <h1 className="text-xl font-bold text-warm-800">{APP_NAME}</h1>
+          <span className="text-sm text-warm-400">{APP_VERSION}</span>
+        </a>
+        <select
+          value={resolvedLanguage(i18n)}
+          onChange={(e) => i18n.changeLanguage(e.target.value)}
+          className="rounded-lg border border-warm-300 bg-warm-100 px-2 py-1 text-xs text-warm-600 hover:bg-warm-200 transition-colors"
+        >
+          {languages.map((lang) => (
+            <option key={lang.code} value={lang.code}>{lang.flag} {lang.label}</option>
+          ))}
+        </select>
+      </div>
 
       <div className="flex items-center gap-3">
         {state.status === 'connected' && (
@@ -63,15 +78,6 @@ export function Header({ state, onDisconnect }: HeaderProps) {
             {label}
           </span>
         )}
-        <select
-          value={i18n.language}
-          onChange={(e) => i18n.changeLanguage(e.target.value)}
-          className="rounded-lg border border-warm-300 bg-warm-100 px-2 py-1 text-xs text-warm-600 hover:bg-warm-200 transition-colors"
-        >
-          {languages.map((lang) => (
-            <option key={lang.code} value={lang.code}>{lang.label}</option>
-          ))}
-        </select>
       </div>
     </header>
   );
