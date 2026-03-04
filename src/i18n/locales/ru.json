@@ -75,6 +75,7 @@
   "risk.moderate": "осторожно",
   "risk.elevated": "продвинутое",
   "support.needHelp": "Нужна помощь?",
+  "support.sourceCode": "Исходный код",
   "error.claimInterface": "Закройте Android Studio, другие клиенты ADB или вкладки браузера, использующие это устройство, и попробуйте снова.",
   "error.timedOut": "Не забудьте нажать \"Разрешить\" на запрос отладки по USB на вашем телефоне.",
   "terminal.adbShell": "$ adb shell",

@@ -75,6 +75,7 @@
   "risk.moderate": "注意",
   "risk.elevated": "高级",
   "support.needHelp": "需要帮助？",
+  "support.sourceCode": "源代码",
   "error.claimInterface": "请关闭 Android Studio、其他 ADB 客户端或正在使用此设备的浏览器标签页，然后重试。",
   "error.timedOut": "请确保在手机上的 USB 调试提示中点击\"允许\"。",
   "terminal.adbShell": "$ adb shell",

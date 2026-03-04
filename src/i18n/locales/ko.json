@@ -75,6 +75,7 @@
   "risk.moderate": "주의",
   "risk.elevated": "고급",
   "support.needHelp": "도움이 필요하세요?",
+  "support.sourceCode": "소스 코드",
   "error.claimInterface": "Android Studio, 다른 ADB 클라이언트 또는 이 기기를 사용 중인 브라우저 탭을 닫고 다시 시도하세요.",
   "error.timedOut": "휴대폰의 USB 디버깅 허용 메시지에서 \"허용\"을 탭했는지 확인하세요.",
   "terminal.adbShell": "$ adb shell",

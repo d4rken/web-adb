@@ -75,6 +75,7 @@
   "risk.moderate": "attenzione",
   "risk.elevated": "avanzato",
   "support.needHelp": "Hai bisogno di aiuto?",
+  "support.sourceCode": "Codice sorgente",
   "error.claimInterface": "Chiudi Android Studio, altri client ADB o schede del browser che usano questo dispositivo, poi riprova.",
   "error.timedOut": "Ricordati di toccare \"Consenti\" nella finestra di debug USB sul telefono.",
   "terminal.adbShell": "$ adb shell",

@@ -86,6 +86,7 @@
   "risk.elevated": "advanced",
 
   "support.needHelp": "Need a hand?",
+  "support.sourceCode": "Source Code",
 
   "error.claimInterface": "Close Android Studio, other ADB clients, or browser tabs using this device, then retry.",
   "error.timedOut": "Make sure to tap \"Allow\" on the USB debugging prompt on your phone.",

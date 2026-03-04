@@ -75,6 +75,7 @@
   "risk.moderate": "注意",
   "risk.elevated": "上級",
   "support.needHelp": "お困りですか？",
+  "support.sourceCode": "ソースコード",
   "error.claimInterface": "Android Studio、他の ADB クライアント、またはこのデバイスを使用しているブラウザタブを閉じてから、もう一度お試しください。",
   "error.timedOut": "スマートフォンに表示される USB デバッグの許可ダイアログで「許可」をタップしてください。",
   "terminal.adbShell": "$ adb shell",

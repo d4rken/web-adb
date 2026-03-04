@@ -75,6 +75,7 @@
   "risk.moderate": "dikkat",
   "risk.elevated": "gelişmiş",
   "support.needHelp": "Yardıma mı ihtiyacınız var?",
+  "support.sourceCode": "Kaynak Kod",
   "error.claimInterface": "Android Studio'yu, diğer ADB istemcilerini veya bu cihazı kullanan tarayıcı sekmelerini kapatın, ardından tekrar deneyin.",
   "error.timedOut": "Telefonunuzdaki USB hata ayıklama isteğinde \"İzin Ver\" seçeneğine dokunmayı unutmayın.",
   "terminal.adbShell": "$ adb shell",

@@ -8,3 +8,4 @@ export const APP_TITLE = `${APP_NAME} ${APP_VERSION}`;
 
 export const SUPPORT_EMAIL = 'support@darken.eu';
 export const DISCORD_URL = 'https://discord.gg/ENtVkMHqZg';
+export const GITHUB_URL = 'https://github.com/d4rken/web-adb';

@@ -75,6 +75,7 @@
   "risk.moderate": "prudence",
   "risk.elevated": "avancé",
   "support.needHelp": "Besoin d'aide ?",
+  "support.sourceCode": "Code source",
   "error.claimInterface": "Fermez Android Studio, les autres clients ADB ou les onglets du navigateur utilisant cet appareil, puis réessayez.",
   "error.timedOut": "N'oubliez pas d'appuyer sur « Autoriser » sur la fenêtre de débogage USB de votre téléphone.",
   "terminal.adbShell": "$ adb shell",
