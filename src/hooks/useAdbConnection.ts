@@ -15,7 +15,6 @@ import { useTranslation } from 'react-i18next';
 
 export interface UseAdbConnection {
   state: ConnectionState;
-  adb: Adb | null;
   connect: () => Promise<void>;
   disconnect: () => Promise<void>;
   resetKey: () => void;
@@ -106,7 +105,6 @@ export function useAdbConnection(): UseAdbConnection {
 
   return {
     state,
-    adb: adbRef.current,
     connect,
     disconnect,
     resetKey,
