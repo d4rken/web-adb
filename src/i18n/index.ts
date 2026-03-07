@@ -13,6 +13,7 @@ import pl from './locales/pl.json';
 import tr from './locales/tr.json';
 import ko from './locales/ko.json';
 import ru from './locales/ru.json';
+import el from './locales/el.json';
 
 i18n
   .use(LanguageDetector)
@@ -31,6 +32,7 @@ i18n
       tr: { translation: tr },
       ko: { translation: ko },
       ru: { translation: ru },
+      el: { translation: el },
     },
     fallbackLng: 'en',
     interpolation: { escapeValue: false },
