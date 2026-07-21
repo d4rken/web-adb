@@ -91,5 +91,16 @@
   "app.sdmaid-se.cmd.revoke-write-secure-settings.title": "WRITE_SECURE_SETTINGS 취소",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.description": "SD Maid에서 WRITE_SECURE_SETTINGS 권한을 제거합니다. 추가 기능이 더 이상 필요하지 않을 때 사용하세요. 앱을 삭제하면 부여된 모든 권한도 함께 취소됩니다.",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked": "권한이 이미 취소되어 있습니다.",
-  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "권한이 현재 부여되어 있습니다."
+  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "권한이 현재 부여되어 있습니다.",
+
+  "app.amply.name": "Amply",
+  "app.amply.description": "제조사의 배터리 충전 보호 모드를 위한 실험적 컨트롤러입니다. 충전 정책을 직접 변경하려면 WRITE_SECURE_SETTINGS가 필요합니다.",
+  "app.amply.cmd.grant-write-secure-settings.title": "WRITE_SECURE_SETTINGS 부여",
+  "app.amply.cmd.grant-write-secure-settings.description": "Amply가 충전 정책을 직접 변경할 수 있도록 WRITE_SECURE_SETTINGS 권한을 부여합니다. 이는 시스템 수준 권한으로, 취소하거나 Amply를 제거할 때까지 유지되며, 이 패키지 이름으로 설치된 앱에 적용됩니다.",
+  "app.amply.cmd.grant-write-secure-settings.checkGranted": "Amply에 이미 이 권한이 있습니다.",
+  "app.amply.cmd.grant-write-secure-settings.checkNotGranted": "Amply에 아직 이 권한이 없습니다.",
+  "app.amply.cmd.revoke-write-secure-settings.title": "WRITE_SECURE_SETTINGS 취소",
+  "app.amply.cmd.revoke-write-secure-settings.description": "Amply에서 WRITE_SECURE_SETTINGS 권한을 제거합니다. 먼저 진행 중인 완전 충전 세션을 중지하거나 복원하세요. 이 권한이 없으면 Amply가 보호용 충전 제한을 복원하지 못할 수 있으며 백그라운드 제어가 중지됩니다. Amply를 제거해도 취소됩니다.",
+  "app.amply.cmd.revoke-write-secure-settings.checkRevoked": "Amply에 이 권한이 없습니다.",
+  "app.amply.cmd.revoke-write-secure-settings.checkGranted": "Amply에 현재 이 권한이 있습니다."
 }

@@ -10,6 +10,7 @@ Some Android apps need ADB permissions to work around OS restrictions. This tool
 
 Currently supported:
 - **SD Maid SE** — Grant/revoke `WRITE_SECURE_SETTINGS`
+- **Amply** — Grant/revoke `WRITE_SECURE_SETTINGS`
 
 ## How to use
 

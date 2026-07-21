@@ -91,5 +91,16 @@
   "app.sdmaid-se.cmd.revoke-write-secure-settings.title": "Cofnij WRITE_SECURE_SETTINGS",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.description": "Usuwa uprawnienie WRITE_SECURE_SETTINGS z SD Maid. Użyj tego, jeśli dodatkowe funkcje nie są już potrzebne. Odinstalowanie aplikacji również cofa wszystkie przyznane uprawnienia.",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked": "Uprawnienie jest już cofnięte.",
-  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "Uprawnienie jest obecnie przyznane."
+  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "Uprawnienie jest obecnie przyznane.",
+
+  "app.amply.name": "Amply",
+  "app.amply.description": "Eksperymentalny sterownik trybów ochrony ładowania baterii producentów. Wymaga WRITE_SECURE_SETTINGS, aby bezpośrednio zmieniać zasady ładowania.",
+  "app.amply.cmd.grant-write-secure-settings.title": "Przyznaj WRITE_SECURE_SETTINGS",
+  "app.amply.cmd.grant-write-secure-settings.description": "Przyznaje uprawnienie WRITE_SECURE_SETTINGS, aby Amply mogło bezpośrednio zmieniać Twoje zasady ładowania. To uprawnienie systemowe, które pozostaje przyznane do momentu jego cofnięcia lub odinstalowania Amply, i dotyczy aplikacji zainstalowanej pod tą nazwą pakietu.",
+  "app.amply.cmd.grant-write-secure-settings.checkGranted": "Amply ma już to uprawnienie.",
+  "app.amply.cmd.grant-write-secure-settings.checkNotGranted": "Amply nie ma jeszcze tego uprawnienia.",
+  "app.amply.cmd.revoke-write-secure-settings.title": "Cofnij WRITE_SECURE_SETTINGS",
+  "app.amply.cmd.revoke-write-secure-settings.description": "Usuwa uprawnienie WRITE_SECURE_SETTINGS z Amply. Najpierw zatrzymaj lub przywróć aktywną sesję pełnego ładowania — bez tego uprawnienia Amply może nie być w stanie przywrócić ochronnego limitu ładowania, a sterowanie w tle zostanie zatrzymane. Odinstalowanie Amply również je cofa.",
+  "app.amply.cmd.revoke-write-secure-settings.checkRevoked": "Amply nie ma tego uprawnienia.",
+  "app.amply.cmd.revoke-write-secure-settings.checkGranted": "Amply obecnie ma to uprawnienie."
 }

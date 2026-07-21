@@ -91,5 +91,16 @@
   "app.sdmaid-se.cmd.revoke-write-secure-settings.title": "Revogar WRITE_SECURE_SETTINGS",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.description": "Remove a permissão WRITE_SECURE_SETTINGS do SD Maid. Use isso se não precisar mais dos recursos extras. Desinstalar o aplicativo também revoga todas as permissões concedidas.",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked": "A permissão já foi revogada.",
-  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "A permissão está concedida atualmente."
+  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "A permissão está concedida atualmente.",
+
+  "app.amply.name": "Amply",
+  "app.amply.description": "Controlador experimental dos modos de proteção de carga da bateria dos fabricantes. Precisa de WRITE_SECURE_SETTINGS para alterar a política de carga diretamente.",
+  "app.amply.cmd.grant-write-secure-settings.title": "Conceder WRITE_SECURE_SETTINGS",
+  "app.amply.cmd.grant-write-secure-settings.description": "Concede a permissão WRITE_SECURE_SETTINGS para que o Amply possa alterar sua política de carga diretamente. É um recurso de nível de sistema que permanece concedido até você revogá-lo ou desinstalar o Amply, e se aplica ao aplicativo instalado com este nome de pacote.",
+  "app.amply.cmd.grant-write-secure-settings.checkGranted": "O Amply já tem essa permissão.",
+  "app.amply.cmd.grant-write-secure-settings.checkNotGranted": "O Amply ainda não tem essa permissão.",
+  "app.amply.cmd.revoke-write-secure-settings.title": "Revogar WRITE_SECURE_SETTINGS",
+  "app.amply.cmd.revoke-write-secure-settings.description": "Remove a permissão WRITE_SECURE_SETTINGS do Amply. Pare ou restaure primeiro qualquer sessão de carga completa ativa — sem esta permissão, o Amply pode não conseguir restaurar seu limite de carga de proteção, e o controle em segundo plano para. Desinstalar o Amply também a revoga.",
+  "app.amply.cmd.revoke-write-secure-settings.checkRevoked": "O Amply não tem essa permissão.",
+  "app.amply.cmd.revoke-write-secure-settings.checkGranted": "O Amply tem essa permissão no momento."
 }

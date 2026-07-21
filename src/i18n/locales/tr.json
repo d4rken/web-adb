@@ -91,5 +91,16 @@
   "app.sdmaid-se.cmd.revoke-write-secure-settings.title": "WRITE_SECURE_SETTINGS İznini Kaldır",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.description": "SD Maid'den WRITE_SECURE_SETTINGS iznini kaldırır. Ekstra özelliklere artık ihtiyacınız yoksa bunu kullanın. Uygulamayı kaldırmak da verilen tüm izinleri iptal eder.",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked": "İzin zaten kaldırılmış.",
-  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "İzin şu anda verilmiş durumda."
+  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "İzin şu anda verilmiş durumda.",
+
+  "app.amply.name": "Amply",
+  "app.amply.description": "Üreticilerin pil şarj koruma modları için deneysel bir denetleyici. Şarj politikasını doğrudan değiştirmek için WRITE_SECURE_SETTINGS gerekir.",
+  "app.amply.cmd.grant-write-secure-settings.title": "WRITE_SECURE_SETTINGS ver",
+  "app.amply.cmd.grant-write-secure-settings.description": "Amply'nin şarj politikanızı doğrudan değiştirebilmesi için WRITE_SECURE_SETTINGS iznini verir. Bu, siz iptal edene veya Amply'yi kaldırana kadar verili kalan sistem düzeyinde bir yetkidir ve bu paket adıyla yüklü olan uygulamaya uygulanır.",
+  "app.amply.cmd.grant-write-secure-settings.checkGranted": "Amply bu izne zaten sahip.",
+  "app.amply.cmd.grant-write-secure-settings.checkNotGranted": "Amply bu izne henüz sahip değil.",
+  "app.amply.cmd.revoke-write-secure-settings.title": "WRITE_SECURE_SETTINGS iznini geri al",
+  "app.amply.cmd.revoke-write-secure-settings.description": "WRITE_SECURE_SETTINGS iznini Amply'den kaldırır. Önce etkin bir tam şarj oturumunu durdurun veya geri yükleyin — bu izin olmadan Amply koruyucu şarj sınırınızı geri yükleyemeyebilir ve arka plan denetimi durur. Amply'yi kaldırmak da izni geri alır.",
+  "app.amply.cmd.revoke-write-secure-settings.checkRevoked": "Amply bu izne sahip değil.",
+  "app.amply.cmd.revoke-write-secure-settings.checkGranted": "Amply şu anda bu izne sahip."
 }

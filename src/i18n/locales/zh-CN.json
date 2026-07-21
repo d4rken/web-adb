@@ -91,5 +91,16 @@
   "app.sdmaid-se.cmd.revoke-write-secure-settings.title": "撤销 WRITE_SECURE_SETTINGS",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.description": "移除 SD Maid 的 WRITE_SECURE_SETTINGS 权限。如果你不再需要额外功能，可以使用此操作。卸载应用也会撤销所有已授予的权限。",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked": "权限已撤销。",
-  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "权限当前已授予。"
+  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "权限当前已授予。",
+
+  "app.amply.name": "Amply",
+  "app.amply.description": "厂商电池充电保护模式的实验性控制器。需要 WRITE_SECURE_SETTINGS 才能直接更改充电策略。",
+  "app.amply.cmd.grant-write-secure-settings.title": "授予 WRITE_SECURE_SETTINGS",
+  "app.amply.cmd.grant-write-secure-settings.description": "授予 WRITE_SECURE_SETTINGS 权限，使 Amply 能够直接更改你的充电策略。这是一项系统级权限，在你撤销它或卸载 Amply 之前会一直保留，并且适用于以此包名安装的应用。",
+  "app.amply.cmd.grant-write-secure-settings.checkGranted": "Amply 已拥有此权限。",
+  "app.amply.cmd.grant-write-secure-settings.checkNotGranted": "Amply 尚未拥有此权限。",
+  "app.amply.cmd.revoke-write-secure-settings.title": "撤销 WRITE_SECURE_SETTINGS",
+  "app.amply.cmd.revoke-write-secure-settings.description": "从 Amply 移除 WRITE_SECURE_SETTINGS 权限。请先停止或恢复任何正在进行的充满电会话——没有此权限，Amply 可能无法恢复你的保护性充电限制，后台控制也会停止。卸载 Amply 同样会撤销此权限。",
+  "app.amply.cmd.revoke-write-secure-settings.checkRevoked": "Amply 没有此权限。",
+  "app.amply.cmd.revoke-write-secure-settings.checkGranted": "Amply 当前拥有此权限。"
 }

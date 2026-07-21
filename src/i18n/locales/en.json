@@ -105,5 +105,16 @@
   "app.sdmaid-se.cmd.revoke-write-secure-settings.title": "Revoke WRITE_SECURE_SETTINGS",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.description": "Removes the WRITE_SECURE_SETTINGS permission from SD Maid. Use this if you no longer need the extra features. Uninstalling the app also revokes all granted permissions.",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked": "Permission is already revoked.",
-  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "Permission is currently granted."
+  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "Permission is currently granted.",
+
+  "app.amply.name": "Amply",
+  "app.amply.description": "Experimental controller for OEM battery charge-protection modes. Needs WRITE_SECURE_SETTINGS to change the charge policy directly.",
+  "app.amply.cmd.grant-write-secure-settings.title": "Grant WRITE_SECURE_SETTINGS",
+  "app.amply.cmd.grant-write-secure-settings.description": "Grants the WRITE_SECURE_SETTINGS permission so Amply can change your charge policy directly. It's a system-level capability that stays granted until you revoke it or uninstall Amply, and it applies to whichever app is installed under this package name.",
+  "app.amply.cmd.grant-write-secure-settings.checkGranted": "Amply already has this permission.",
+  "app.amply.cmd.grant-write-secure-settings.checkNotGranted": "Amply doesn't have this permission yet.",
+  "app.amply.cmd.revoke-write-secure-settings.title": "Revoke WRITE_SECURE_SETTINGS",
+  "app.amply.cmd.revoke-write-secure-settings.description": "Removes the WRITE_SECURE_SETTINGS permission from Amply. Stop or restore any active full-charge session first — without this permission Amply may not be able to restore your protective charge limit, and background control stops. Uninstalling Amply also revokes it.",
+  "app.amply.cmd.revoke-write-secure-settings.checkRevoked": "Amply doesn't have this permission.",
+  "app.amply.cmd.revoke-write-secure-settings.checkGranted": "Amply currently has this permission."
 }

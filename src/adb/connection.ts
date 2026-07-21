@@ -93,13 +93,20 @@ export async function executeCommand(
       `Command timed out after ${COMMAND_TIMEOUT_MS / 1000}s`,
       signal,
     );
-    if (result.exitCode !== 0 && result.stderr) {
-      throw new Error(result.stderr.trim() || `Command failed with exit code ${result.exitCode}`);
+    if (result.exitCode !== 0) {
+      // Fail on any nonzero exit, not only when stderr is populated: a command that
+      // fails silently (nonzero, empty stderr) must not be reported as success. Prefer
+      // stderr, then stdout, then the bare exit code for the message.
+      throw new Error(
+        result.stderr.trim() || result.stdout.trim() || `Command failed with exit code ${result.exitCode}`,
+      );
     }
     return (result.stdout + result.stderr).trim();
   }
 
-  // Fallback to none protocol
+  // Fallback to none protocol. This transport cannot report exit codes, so callers that
+  // need to confirm an effect (e.g. a permission grant) must verify state afterwards
+  // rather than rely on command success.
   const result = await withTimeout(
     adb.subprocess.noneProtocol.spawnWaitText(command),
     COMMAND_TIMEOUT_MS,

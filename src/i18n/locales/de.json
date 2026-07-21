@@ -91,5 +91,16 @@
   "app.sdmaid-se.cmd.revoke-write-secure-settings.title": "WRITE_SECURE_SETTINGS widerrufen",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.description": "Entzieht SD Maid die WRITE_SECURE_SETTINGS-Berechtigung. Nutze dies, wenn du die zusätzlichen Funktionen nicht mehr benötigst. Das Deinstallieren der App widerruft ebenfalls alle gewährten Berechtigungen.",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked": "Berechtigung ist bereits widerrufen.",
-  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "Berechtigung ist derzeit gewährt."
+  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "Berechtigung ist derzeit gewährt.",
+
+  "app.amply.name": "Amply",
+  "app.amply.description": "Experimenteller Regler für die Akkuschutz-Lademodi verschiedener Hersteller. Benötigt WRITE_SECURE_SETTINGS, um die Laderichtlinie direkt zu ändern.",
+  "app.amply.cmd.grant-write-secure-settings.title": "WRITE_SECURE_SETTINGS gewähren",
+  "app.amply.cmd.grant-write-secure-settings.description": "Gewährt die Berechtigung WRITE_SECURE_SETTINGS, damit Amply deine Laderichtlinie direkt ändern kann. Es ist eine systemweite Berechtigung, die bestehen bleibt, bis du sie widerrufst oder Amply deinstallierst, und sie gilt für die App, die unter diesem Paketnamen installiert ist.",
+  "app.amply.cmd.grant-write-secure-settings.checkGranted": "Amply hat diese Berechtigung bereits.",
+  "app.amply.cmd.grant-write-secure-settings.checkNotGranted": "Amply hat diese Berechtigung noch nicht.",
+  "app.amply.cmd.revoke-write-secure-settings.title": "WRITE_SECURE_SETTINGS widerrufen",
+  "app.amply.cmd.revoke-write-secure-settings.description": "Entfernt die Berechtigung WRITE_SECURE_SETTINGS von Amply. Beende oder stelle zuvor eine aktive Voll-Lade-Sitzung wieder her – ohne diese Berechtigung kann Amply deine schützende Ladegrenze möglicherweise nicht wiederherstellen, und die Hintergrundsteuerung stoppt. Auch das Deinstallieren von Amply widerruft sie.",
+  "app.amply.cmd.revoke-write-secure-settings.checkRevoked": "Amply hat diese Berechtigung nicht.",
+  "app.amply.cmd.revoke-write-secure-settings.checkGranted": "Amply hat diese Berechtigung derzeit."
 }

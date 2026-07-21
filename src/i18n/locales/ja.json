@@ -91,5 +91,16 @@
   "app.sdmaid-se.cmd.revoke-write-secure-settings.title": "WRITE_SECURE_SETTINGS を取り消し",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.description": "SD Maid から WRITE_SECURE_SETTINGS 権限を削除します。追加機能が不要になった場合に使用してください。アプリをアンインストールすると、付与されたすべての権限も取り消されます。",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked": "権限はすでに取り消されています。",
-  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "権限は現在付与されています。"
+  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "権限は現在付与されています。",
+
+  "app.amply.name": "Amply",
+  "app.amply.description": "メーカー製のバッテリー充電保護モードを操作する実験的なコントローラーです。充電ポリシーを直接変更するには WRITE_SECURE_SETTINGS が必要です。",
+  "app.amply.cmd.grant-write-secure-settings.title": "WRITE_SECURE_SETTINGS を付与",
+  "app.amply.cmd.grant-write-secure-settings.description": "WRITE_SECURE_SETTINGS 権限を付与して、Amply が充電ポリシーを直接変更できるようにします。これはシステムレベルの権限で、取り消すか Amply をアンインストールするまで付与されたままになり、このパッケージ名でインストールされているアプリに適用されます。",
+  "app.amply.cmd.grant-write-secure-settings.checkGranted": "Amply はすでにこの権限を持っています。",
+  "app.amply.cmd.grant-write-secure-settings.checkNotGranted": "Amply はまだこの権限を持っていません。",
+  "app.amply.cmd.revoke-write-secure-settings.title": "WRITE_SECURE_SETTINGS を取り消し",
+  "app.amply.cmd.revoke-write-secure-settings.description": "Amply から WRITE_SECURE_SETTINGS 権限を削除します。先に進行中のフル充電セッションを停止または復元してください。この権限がないと、Amply は保護的な充電上限を復元できない場合があり、バックグラウンド制御も停止します。Amply をアンインストールしても取り消されます。",
+  "app.amply.cmd.revoke-write-secure-settings.checkRevoked": "Amply はこの権限を持っていません。",
+  "app.amply.cmd.revoke-write-secure-settings.checkGranted": "Amply は現在この権限を持っています。"
 }

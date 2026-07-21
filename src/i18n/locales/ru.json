@@ -91,5 +91,16 @@
   "app.sdmaid-se.cmd.revoke-write-secure-settings.title": "Отозвать WRITE_SECURE_SETTINGS",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.description": "Удаляет разрешение WRITE_SECURE_SETTINGS у SD Maid. Используйте это, если дополнительные функции больше не нужны. Удаление приложения также отзывает все выданные разрешения.",
   "app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked": "Разрешение уже отозвано.",
-  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "Разрешение в данный момент выдано."
+  "app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted": "Разрешение в данный момент выдано.",
+
+  "app.amply.name": "Amply",
+  "app.amply.description": "Экспериментальный контроллер режимов защиты зарядки аккумулятора от производителей. Требуется WRITE_SECURE_SETTINGS для прямого изменения политики зарядки.",
+  "app.amply.cmd.grant-write-secure-settings.title": "Выдать WRITE_SECURE_SETTINGS",
+  "app.amply.cmd.grant-write-secure-settings.description": "Выдаёт разрешение WRITE_SECURE_SETTINGS, чтобы Amply мог напрямую изменять вашу политику зарядки. Это системное разрешение, которое остаётся выданным, пока вы не отзовёте его или не удалите Amply, и применяется к приложению, установленному под этим именем пакета.",
+  "app.amply.cmd.grant-write-secure-settings.checkGranted": "У Amply уже есть это разрешение.",
+  "app.amply.cmd.grant-write-secure-settings.checkNotGranted": "У Amply ещё нет этого разрешения.",
+  "app.amply.cmd.revoke-write-secure-settings.title": "Отозвать WRITE_SECURE_SETTINGS",
+  "app.amply.cmd.revoke-write-secure-settings.description": "Удаляет разрешение WRITE_SECURE_SETTINGS у Amply. Сначала остановите или восстановите активный сеанс полной зарядки — без этого разрешения Amply может не суметь восстановить ваш защитный предел зарядки, а фоновое управление остановится. Удаление Amply также отзывает его.",
+  "app.amply.cmd.revoke-write-secure-settings.checkRevoked": "У Amply нет этого разрешения.",
+  "app.amply.cmd.revoke-write-secure-settings.checkGranted": "У Amply сейчас есть это разрешение."
 }

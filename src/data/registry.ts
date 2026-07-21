@@ -1,7 +1,8 @@
 import type { AppCategory, CommandEntry } from './types';
 import { sdmaidSe } from './apps/sdmaid-se';
+import { amply } from './apps/amply';
 
-export const apps: AppCategory[] = [sdmaidSe];
+export const apps: AppCategory[] = [sdmaidSe, amply];
 
 export function findApp(appId: string): AppCategory | undefined {
   return apps.find((a) => a.id === appId);

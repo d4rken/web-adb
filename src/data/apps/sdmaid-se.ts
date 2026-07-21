@@ -1,12 +1,8 @@
 import type { AppCategory } from '../types';
+import { WRITE_SECURE_SETTINGS, isPermissionGrantedForUser0 } from '../adb-helpers';
 
 const SDMAID_PKG = 'eu.darken.sdmse';
-const PERMISSION = 'android.permission.WRITE_SECURE_SETTINGS';
-
-async function hasWriteSecureSettings(run: (cmd: string) => Promise<string>): Promise<boolean> {
-  const output = await run(`dumpsys package ${SDMAID_PKG} | grep ${PERMISSION}`);
-  return output.includes('granted=true');
-}
+const PERMISSION = WRITE_SECURE_SETTINGS;
 
 export const sdmaidSe: AppCategory = {
   id: 'sdmaid-se',
@@ -22,7 +18,7 @@ export const sdmaidSe: AppCategory = {
       command: `pm grant --user 0 ${SDMAID_PKG} ${PERMISSION}`,
       risk: 'safe',
       async check(run) {
-        const granted = await hasWriteSecureSettings(run);
+        const granted = await isPermissionGrantedForUser0(run, SDMAID_PKG, PERMISSION);
         if (granted) return { proceed: false, message: 'app.sdmaid-se.cmd.grant-write-secure-settings.checkGranted' };
         return { proceed: true, message: 'app.sdmaid-se.cmd.grant-write-secure-settings.checkNotGranted' };
       },
@@ -34,7 +30,7 @@ export const sdmaidSe: AppCategory = {
       command: `pm revoke --user 0 ${SDMAID_PKG} ${PERMISSION}`,
       risk: 'safe',
       async check(run) {
-        const granted = await hasWriteSecureSettings(run);
+        const granted = await isPermissionGrantedForUser0(run, SDMAID_PKG, PERMISSION);
         if (!granted) return { proceed: false, message: 'app.sdmaid-se.cmd.revoke-write-secure-settings.checkRevoked' };
         return { proceed: true, message: 'app.sdmaid-se.cmd.revoke-write-secure-settings.checkGranted' };
       },
