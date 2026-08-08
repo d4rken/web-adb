@@ -20,6 +20,7 @@ const languages = [
   { code: 'tr', flag: '🇹🇷', label: 'Türkçe' },
   { code: 'ko', flag: '🇰🇷', label: '한국어' },
   { code: 'ru', flag: '🇷🇺', label: 'Русский' },
+  { code: 'el', flag: '🇬🇷', label: 'Ελληνικά' },
 ];
 
 function resolvedLanguage(i18n: { resolvedLanguage?: string; language: string }): string {
